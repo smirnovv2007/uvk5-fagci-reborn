@@ -107,6 +107,18 @@ jobs:
           tag: nightly-tag-${{ steps.date.outputs.date }}
           file: k5-fagci-r3b0rn-nightly-${{ steps.version_date.outputs.date }}-chirp-module.py
 
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-fagci-r3b0rn-nightly-${{ steps.version_date.outputs.date }}.bin
+          path: k5-fagci-r3b0rn-nightly-${{ steps.version_date.outputs.date }}.bin
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: k5-fagci-r3b0rn-nightly-${{ steps.version_date.outputs.date }}-chirp-module.py
+          path: k5-fagci-r3b0rn-nightly-${{ steps.version_date.outputs.date }}-chirp-module.py
+
       - name: send msg
         run: |
           curl --url "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMediaGroup" \
